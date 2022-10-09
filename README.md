@@ -45,7 +45,7 @@ services:
     - "PASSWORD=password"
     - "PROTOCOL=nc"
     - "NODTLS=yes"
-    - "USESCRIPT=no"
+    - "USESCRIPT=yes"
     network_mode: host
     volumes:
     - "/home/myuser/data/juniroutes:/data/juniroutes"
