@@ -20,7 +20,7 @@ If you want to use ready image you have to know there are some mandatory environ
 ## Docker example
 
 ```bash
-
+docker run --privileged -t -v ${PWD}/data:/data --name openconnect-client -h openconnect-client -e TZ=Europe/Rome -e SERVER=server -e USERNAME=username -e PASSWORD=password -e PROTOCOL=nc -e NODTLS=yes -e USESCRIPT=no ghcr.io/snakuzzo/openconnect-client:main 
 ```
 
 ## Docker compose example
@@ -34,7 +34,7 @@ services:
   
     hostname: openconnect-client
     container_name: openconnect-client
-    image: image
+    image: ghcr.io/snakuzzo/openconnect-client:main
     privileged: true
     restart: "no"
     tty: true
