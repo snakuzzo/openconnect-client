@@ -1,0 +1,42 @@
+#! /usr/bin/env bash
+
+JUNIROUTES=/data/juniroutes
+
+do_connect() {
+    echo $TUNDEV
+    ip link set dev "$TUNDEV" up mtu "$INTERNAL_IP4_MTU"
+    ip addr add "$INTERNAL_IP4_ADDRESS/32" peer "$INTERNAL_IP4_ADDRESS" dev "$TUNDEV"
+
+    if [ -f "$JUNIROUTES" ]; then
+
+        echo "File $JUNIROUTES found."
+
+        echo "Adding routes for production IP/subnet from file..."
+        NEW_ROUTES=`cat $JUNIROUTES | awk -F# '{print $1}'`
+        for i in $NEW_ROUTES; do
+            ip r add $i dev $TUNDEV
+        done
+
+    fi
+
+}
+
+do_disconnect() {
+    ip link delete "$TUNDEV"
+}
+
+case "$reason" in
+    pre-init)
+        # pass
+        ;;
+    connect)
+        do_connect
+        ;;
+    disconnect)
+        do_disconnect
+        ;;
+    *)
+        echo "unknown reason '$reason'" 1>&2
+        exit 1
+        ;;
+esac

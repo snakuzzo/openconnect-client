@@ -1,0 +1,7 @@
+#! /usr/bin/env bash
+
+echo "Starting openconnect for JUNIPER..."
+/data/start-expect
+JUNI_PID=$!
+
+wait $JUNI_PID

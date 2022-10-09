@@ -1,0 +1,29 @@
+#!/usr/bin/expect
+
+#eval spawn openconnect --no-dtls --protocol=$env(PROTOCOL) --script /data/juniper-script --user $env(USERNAME) $env(SERVER)
+
+set timeout -1
+
+set COMMAND "openconnect "
+
+if { $env(NODTLS)  == "yes"} {
+    append COMMAND " --no-dtls"
+}
+
+append COMMAND " --protocol=$env(PROTOCOL)"
+
+if { $env(USESCRIPT)  == "yes"} {
+    append COMMAND " --script /data/juniper-script"
+}
+
+append COMMAND " --user $env(USERNAME) $env(SERVER)"
+
+eval spawn $COMMAND
+
+expect "Enter 'yes' to accept, 'no' to abort; anything else to view:"
+send -- "yes\n"
+expect "password:"
+send "$env(PASSWORD)\n"
+
+interact
+
