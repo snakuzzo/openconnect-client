@@ -1,14 +1,14 @@
 # Openconnect client
 
 This is an openconnect client (latest version) based on Ubuntu 22.04 official image and official openconnect repository
-This client works on Linux, but it doesn't on Windows and macOS because it needs `network: host` to change routing. 
+This client works on Linux, but it doesn't on Windows and macOS because it needs `network: host` to change routing
 You can create your container using my image or build your own image starting from Dockerfile
 
 ## Using image
 
 If you want to use ready image you have to know there are some mandatory environment variables:
 
-- SERVER -> VPN server ip/fqdn 
+- SERVER -> VPN server ip/fqdn
 - USERNAME -> your username
 - PASSWORD -> your password
 - PROTOCOL -> (nc/pulse/gp/f5/fortinet/array). In my case I use nc.
