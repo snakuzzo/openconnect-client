@@ -13,5 +13,6 @@ RUN export TERM=xterm-256color
 RUN apt update && apt install openconnect -y
 
 WORKDIR /data
+COPY  data/* /data/
 RUN chmod 744 /data
 CMD ["/data/start"]
