@@ -26,6 +26,18 @@ If your OTP is 123456...
 docker run --privileged -t -d -v /home/myuser/data/juniroutes:/data/juniroutes --name openconnect-client -h openconnect-client -e TZ=Europe/Rome -e SERVER=server -e USERNAME=username -e PASSWORD=password -e OTP=123456 -e PROTOCOL=nc -e NODTLS=yes -e USESCRIPT=yes ghcr.io/snakuzzo/openconnect-client:main 
 ```
 
+This is an example script to start openconnect-client with OTP...
+
+```bash
+#! /usr/bin/env bash
+
+echo -n OTP: 
+read -s otp
+echo ${otp}
+
+docker run --privileged -d  --rm -t -v /mydata/juniroutes:/data/juniroutes --name openconnect-client -h openconnect-client -e TZ=Europe/Rome -e SERVER=myserver -e USERNAME=username -e PASSWORD=password -e OTP=${otp} -e PROTOCOL=nc -e NODTLS=yes -e USESCRIPT=yes ghcr.io/snakuzzo/openconnect-client:main 
+```
+
 ## Docker compose example
 
 ```yaml
@@ -63,4 +75,16 @@ OTP=123456 docker-compose up -d openconnect-client
 
 ```bash
 docker-compose stop openconnect-client
+```
+
+This is an example script to start openconnect-client...
+
+```bash
+#! /usr/bin/env bash
+
+echo -n OTP: 
+read -s otp
+echo ${otp}
+
+OTP=${otp} docker-compose -f $HOME/utils/openconnect/docker-compose.yaml up -d 
 ```
