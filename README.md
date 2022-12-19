@@ -11,6 +11,7 @@ If you want to use ready image you have to know there are some mandatory environ
 - SERVER -> VPN server ip/fqdn
 - USERNAME -> your username
 - PASSWORD -> your password
+- OTP -> your OTP
 - PROTOCOL -> (nc/pulse/gp/f5/fortinet/array). In my case I use nc.
 - NODTLS -> (yes/no). Disable DTLS and ESP... in my case I always need this when I connect over another VPN connection.
 - USESCRIPT -> (yes/no). Use yes if you want use external script (`/data/juniper-script`)* to set your own routing and not the default. View example browsing code.
