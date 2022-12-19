@@ -43,6 +43,7 @@ services:
     - "SERVER=server"
     - "USERNAME=username"
     - "PASSWORD=password"
+    - "OTP=${OTP}"
     - "PROTOCOL=nc"
     - "NODTLS=yes"
     - "USESCRIPT=yes"
