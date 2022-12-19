@@ -23,7 +23,7 @@ If you want to use ready image you have to know there are some mandatory environ
 If your OTP is 123456...
 
 ```bash
-OTP=123456 docker run --privileged -t -d -v /home/myuser/data/juniroutes:/data/juniroutes --name openconnect-client -h openconnect-client -e TZ=Europe/Rome -e SERVER=server -e USERNAME=username -e PASSWORD=password -e PROTOCOL=nc -e NODTLS=yes -e USESCRIPT=yes ghcr.io/snakuzzo/openconnect-client:main 
+docker run --privileged -t -d -v /home/myuser/data/juniroutes:/data/juniroutes --name openconnect-client -h openconnect-client -e TZ=Europe/Rome -e SERVER=server -e USERNAME=username -e PASSWORD=password -e OTP=123456 -e PROTOCOL=nc -e NODTLS=yes -e USESCRIPT=yes ghcr.io/snakuzzo/openconnect-client:main 
 ```
 
 ## Docker compose example
@@ -56,7 +56,7 @@ services:
 then to start...
 
 ```bash
-docker-compose up -d openconnect-client
+OTP=123456 docker-compose up -d openconnect-client
 ```
 
 ...and to stop...
