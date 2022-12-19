@@ -19,15 +19,15 @@ If you want to use ready image you have to know there are some mandatory environ
 
 ## Docker example
 
+If your OTP is 123456...
+
 ```bash
-docker run --privileged -t -d -v /home/myuser/data/juniroutes:/data/juniroutes --name openconnect-client -h openconnect-client -e TZ=Europe/Rome -e SERVER=server -e USERNAME=username -e PASSWORD=password -e PROTOCOL=nc -e NODTLS=yes -e USESCRIPT=yes ghcr.io/snakuzzo/openconnect-client:main 
+OTP=123456 docker run --privileged -t -d -v /home/myuser/data/juniroutes:/data/juniroutes --name openconnect-client -h openconnect-client -e TZ=Europe/Rome -e SERVER=server -e USERNAME=username -e PASSWORD=password -e PROTOCOL=nc -e NODTLS=yes -e USESCRIPT=yes ghcr.io/snakuzzo/openconnect-client:main 
 ```
 
 ## Docker compose example
 
 ```yaml
-version: '3.9'
-
 services:
 
   openconnect-client:
