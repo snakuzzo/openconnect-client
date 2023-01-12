@@ -38,6 +38,12 @@ echo ${otp}
 docker run --privileged -d  --rm -t -v /mydata/juniroutes:/data/juniroutes --name openconnect-client -h openconnect-client -e TZ=Europe/Rome -e SERVER=myserver -e USERNAME=username -e PASSWORD=password -e OTP=${otp} -e PROTOCOL=nc -e NODTLS=yes -e USESCRIPT=yes ghcr.io/snakuzzo/openconnect-client:main 
 ```
 
+To stop...
+
+```bash
+docker exec openconnect-client killall -SIGINT openconnect
+```
+
 ## Docker compose example
 
 ```yaml
@@ -71,10 +77,10 @@ then to start...
 OTP=123456 docker-compose up -d openconnect-client
 ```
 
-...and to stop...
+...and to perform a clean stop (as described in doc [here](https://www.infradead.org/openconnect/manual.html#heading5))...
 
 ```bash
-docker-compose stop openconnect-client
+docker-compose exec openconnect-client killall -SIGINT openconnect
 ```
 
 This is an example script to start openconnect-client...
